@@ -27,7 +27,7 @@ class JumpPad : JavaPlugin(), TabCompleter {
             dataFile.createNewFile()
             net.xtb.jumpPad.config = Configuration()
         }
-        logger.info("JumpPad 1.0.0 Enabled!")
+        logger.info("JumpPad 1.0.1 Enabled!")
     }
 
     override fun onDisable() {
@@ -50,12 +50,12 @@ class JumpPad : JavaPlugin(), TabCompleter {
                     }
                     "blacklist" -> {
                         when(args.getOrNull(2)) {
-                            null -> return arrayListOf("add", "remove", "enable", "disable", "info")
+                            null -> return arrayListOf("add", "remove", "enable", "info")
                         }
                     }
                     "whitelist" -> {
                         when(args.getOrNull(2)) {
-                            null -> return arrayListOf("add", "remove", "enable", "disable", "info")
+                            null -> return arrayListOf("add", "remove", "enable", "info")
                         }
                     }
                 }
@@ -70,5 +70,5 @@ data class Configuration(
     var isBlackListEnabled : Boolean = false,
     var blackListedLocations : ArrayList<String> = arrayListOf(),
     var whiteListedLocations : ArrayList<String> = arrayListOf(),
-    var jumppadVectors : HashMap<String, Pair<Int, Int>> = HashMap()
+    var jumppadVectors : HashMap<String, Pair<Float, Float>> = HashMap()
 )
