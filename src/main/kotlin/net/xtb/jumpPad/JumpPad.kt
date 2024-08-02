@@ -35,10 +35,10 @@ class JumpPad : JavaPlugin(), TabCompleter {
         logger.info("Goodbye!")
     }
 
-    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>?): MutableList<String> {
+    override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String> {
         when(command.name) {
             "jumppad" -> {
-                when(args?.getOrNull(0)) {
+                when(args.getOrNull(0)) {
                     "" -> return arrayListOf("set", "blacklist", "whitelist", "delete", "info")
 
                     "set" -> {
