@@ -12,7 +12,7 @@ class JumpPadCommandHandler : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         when(args.size) {
             0 -> {
-                val message = TextComponent("JumpPad v1.0.0 - xtb7/jumppad (Github)")
+                val message = TextComponent("JumpPad v1.0.1 - xtb7/jumppad (Github)")
                 message.isUnderlined = true
                 message.color = ChatColor.GREEN
                 message.clickEvent = ClickEvent(ClickEvent.Action.OPEN_URL, "https://github.com/xtb7/JumpPad")
@@ -22,15 +22,15 @@ class JumpPadCommandHandler : CommandExecutor {
                 val jumppad = (sender as Player).getTargetBlockExact(5)?:return false
                 when(args[0]) {
                     "set" -> {
-                        val vector = config.jumppadVectors[Common.locationToString(jumppad.location)]?:Pair(1, 1)
+                        val vector = config.jumppadVectors[Common.locationToString(jumppad.location)]?:Pair(1F, 1F)
                         when(args.getOrNull(1)) {
                             "x" -> {
-                                config.jumppadVectors[Common.locationToString(jumppad.location)] = Pair((args.getOrNull(2)?:return false).toInt(), vector.second)
+                                config.jumppadVectors[Common.locationToString(jumppad.location)] = Pair((args.getOrNull(2)?:return false).toFloatOrNull()?:return false, vector.second)
                                 sender.sendMessage("You have successfully set the x multiplier.")
                                 return true
                             }
                             "y" -> {
-                                config.jumppadVectors[Common.locationToString(jumppad.location)] = Pair(vector.first, (args.getOrNull(2)?:return false).toInt())
+                                config.jumppadVectors[Common.locationToString(jumppad.location)] = Pair(vector.first, (args.getOrNull(2)?:return false).toFloatOrNull()?:return false)
                                 sender.sendMessage("You have successfully set the y value.")
                                 return true
                             }
@@ -51,11 +51,6 @@ class JumpPadCommandHandler : CommandExecutor {
                                 config.isBlackListEnabled = false
                                 sender.sendMessage("You have enabled the whitelist and disabled the blacklist.")
                             }
-                            "disable" -> {
-                                config.isWhiteListEnabled = false
-                                config.isBlackListEnabled = true
-                                sender.sendMessage("You have disabled the whitelist and enabled the blacklist.")
-                            }
                             "info" -> sender.sendMessage("Selected Jumppad Info:\nIs Whitelisted: ${config.whiteListedLocations.contains(Common.locationToString(jumppad.location))}")
                         }
                         return true
@@ -75,11 +70,6 @@ class JumpPadCommandHandler : CommandExecutor {
                                 config.isWhiteListEnabled = false
                                 sender.sendMessage("You have enabled the blacklist and disabled the whitelist.")
                             }
-                            "disable" -> {
-                                config.isBlackListEnabled = false
-                                config.isWhiteListEnabled = true
-                                sender.sendMessage("You have disabled the blacklist and enabled the whitelist.")
-                            }
                             "info" -> sender.sendMessage("Selected Jumppad Info:\nIs Blacklisted: ${config.blackListedLocations.contains(Common.locationToString(jumppad.location))}")
                         }
                         return true
@@ -93,7 +83,7 @@ class JumpPadCommandHandler : CommandExecutor {
                         return true
                     }
                     "info" -> {
-                        val vector = config.jumppadVectors[Common.locationToString(jumppad.location)]?:Pair(1,1)
+                        val vector = config.jumppadVectors[Common.locationToString(jumppad.location)]?:Pair(1F,1F)
                         sender.sendMessage("X Multiplier: ${vector.first}\nY Value: ${vector.second}")
                         return true
                     }

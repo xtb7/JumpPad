@@ -14,7 +14,7 @@ class JumpPadInteractHandler : Listener {
                 if(e.action != Action.PHYSICAL || !e.player.hasPermission("jumppad.use") || (config.isWhiteListEnabled && !config.whiteListedLocations.contains(Common.locationToString(e.clickedBlock!!.location))) || (config.isBlackListEnabled && config.blackListedLocations.contains(Common.locationToString(e.clickedBlock!!.location)))) {
                     return
                 }
-                val vector = config.jumppadVectors[Common.locationToString(e.clickedBlock!!.location)]?: Pair(1, 1)
+                val vector = config.jumppadVectors[Common.locationToString(e.clickedBlock!!.location)]?: Pair(1F, 1F)
                 e.player.velocity = e.player.location.direction.multiply(vector.first).setY(vector.second)
             }
             else -> return
