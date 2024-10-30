@@ -1,12 +1,8 @@
 package net.xtb.jumpPad
 
-import net.kyori.adventure.platform.bukkit.BukkitAudiences
 import net.kyori.adventure.text.Component.text
 import net.kyori.adventure.text.format.TextColor.color
 import net.kyori.adventure.text.format.TextDecoration
-import net.md_5.bungee.api.ChatColor
-import net.md_5.bungee.api.chat.ClickEvent
-import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
