@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/JumpPad.main.iml" filepath="$PROJECT_DIR$/.idea/modules/JumpPad.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/JumpPad.test.iml" filepath="$PROJECT_DIR$/.idea/modules/JumpPad.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/net.xtb.JumpPad.main.iml" filepath="$PROJECT_DIR$/.idea/modules/net.xtb.JumpPad.main.iml" />
     </modules>
   </component>
 </project>
